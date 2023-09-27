@@ -37,10 +37,10 @@ function App() {
         <hr />
 
         {/* <!-- search and filter --> */}
-        <Search addToMovieList = {addToMovieList} />
+        <Search addToMovieList = {addToMovieList} deleteMovie={deleteMovie}/>
 
         {/* <!-- user cards --> */}
-        <Display movieList = {movieList} deleteMovie={deleteMovie}/>
+        <Display movieList = {movieList} deleteMovie={deleteMovie} addToMovieList={addToMovieList}/>
         
       </div>
 

@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react'
 import { CustomCard } from './CustomCard'
 import { fetechMovie } from '../Utils/axiosHelp'
 
-export const Search = ({ addToMovieList }) => {
+export const Search = ({ addToMovieList, deleteMovie }) => {
     const [movie, setMovie] = useState({})
+    const [searchResult, setSearchResult] = useState([])
     const strRef = useRef("");
     const [error, setError] = useState("")
 
@@ -17,17 +18,25 @@ export const Search = ({ addToMovieList }) => {
 
         if (data.Response === "True") {
             setMovie(data);
+            setSearchResult([data])
         } else {
             setError(data.Error)
         }
 
     }
 
+    // const handleDelete = () => {
+    //     setMovie({});
+    //     strRef.current.value = "";
+    // }
+
     const func = (mode) => {
         addToMovieList({ ...movie, mode });
         setMovie({});
         strRef.current.value = "";
     }
+
+   
 
     return (
         <div className="bg-black p-5 mt-5 rounded shadow-lg">
@@ -47,11 +56,11 @@ export const Search = ({ addToMovieList }) => {
                         </div>
                     </div>
                 </form>
-                <div className="col-m  d-flex justify-content-center">
+                <div className="col-m mt-4 d-flex justify-content-center">
                     {error && <div className="alert alert-danger">
                         {error}
                     </div>}
-                    {movie?.imdbID && <CustomCard movie={movie} func={func} />}
+                    {movie?.imdbID && <CustomCard movie={movie} func={func} deleteMovie={deleteMovie} searchResult={searchResult}/>}
 
                 </div>
             </div>
