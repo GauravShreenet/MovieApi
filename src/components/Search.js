@@ -4,7 +4,6 @@ import { fetechMovie } from '../Utils/axiosHelp'
 
 export const Search = ({ addToMovieList, deleteMovie }) => {
     const [movie, setMovie] = useState({})
-    const [searchResult, setSearchResult] = useState([])
     const strRef = useRef("");
     const [error, setError] = useState("")
 
@@ -18,22 +17,23 @@ export const Search = ({ addToMovieList, deleteMovie }) => {
 
         if (data.Response === "True") {
             setMovie(data);
-            setSearchResult([data])
         } else {
             setError(data.Error)
         }
 
     }
 
-    const handleDelete = () => {
-        setMovie({});
-        strRef.current.value = "";
-    }
 
     const func = (mode) => {
-        addToMovieList({ ...movie, mode });
+        if (mode !== "delete") {
+            addToMovieList({ ...movie, mode });
         setMovie({});
         strRef.current.value = "";
+        }else{
+            setMovie({});
+            strRef.current.value = "";
+        }
+        
     }
 
    
@@ -60,7 +60,7 @@ export const Search = ({ addToMovieList, deleteMovie }) => {
                     {error && <div className="alert alert-danger">
                         {error}
                     </div>}
-                    {movie?.imdbID && <CustomCard movie={movie} func={func} handleDelete={handleDelete}/>}
+                    {movie?.imdbID && <CustomCard movie={movie} func={func} deleteMovie={deleteMovie}/>}
 
                 </div>
             </div>
