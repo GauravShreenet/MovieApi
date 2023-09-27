@@ -25,10 +25,10 @@ export const Search = ({ addToMovieList, deleteMovie }) => {
 
     }
 
-    // const handleDelete = () => {
-    //     setMovie({});
-    //     strRef.current.value = "";
-    // }
+    const handleDelete = () => {
+        setMovie({});
+        strRef.current.value = "";
+    }
 
     const func = (mode) => {
         addToMovieList({ ...movie, mode });
@@ -60,7 +60,7 @@ export const Search = ({ addToMovieList, deleteMovie }) => {
                     {error && <div className="alert alert-danger">
                         {error}
                     </div>}
-                    {movie?.imdbID && <CustomCard movie={movie} func={func} deleteMovie={deleteMovie} searchResult={searchResult}/>}
+                    {movie?.imdbID && <CustomCard movie={movie} func={func} handleDelete={handleDelete}/>}
 
                 </div>
             </div>

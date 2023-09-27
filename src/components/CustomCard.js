@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CustomCard = ({ movie, func, deleteMovie, searchResult }) => {
+export const CustomCard = ({ movie, func, deleteMovie, handleDelete }) => {
 
     return (
         <div className="card" style={{ width: "18rem" }}>
