@@ -16,6 +16,11 @@ function App() {
     ])
   }
 
+  const deleteMovie = (id) => {
+    const updateMovie = movieList.filter((item)=> item.imdbID !== id)
+    setMovieList(updateMovie)
+  }
+
   console.log(movieList)
 
   return (
@@ -32,10 +37,10 @@ function App() {
         <hr />
 
         {/* <!-- search and filter --> */}
-        <Search addToMovieList = {addToMovieList}/>
+        <Search addToMovieList = {addToMovieList} />
 
         {/* <!-- user cards --> */}
-        <Display movieList={movieList}/>
+        <Display movieList = {movieList} deleteMovie={deleteMovie}/>
         
       </div>
 

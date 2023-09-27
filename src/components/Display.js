@@ -1,7 +1,10 @@
 import React from 'react'
 import { CustomCard } from './CustomCard'
 
-export const Display = ({movieList}) => {
+export const Display = ({movieList, deleteMovie}) => {
+
+   
+
     return (
         <div className="bg-black p-5 rounded shadow-lg mt-5">
             <div className="row">
@@ -19,7 +22,7 @@ export const Display = ({movieList}) => {
             </div>
             <div className="row">
                 <div className="col d-flex flex-wrap justify-content-between gap-4">
-                    {movieList.map((item, i )=> (<CustomCard key={i} movie={item}/>))}
+                    {movieList.map((item, i )=> (<CustomCard key={i} movie={item} deleteMovie={deleteMovie}/>))}
 
                     
                     

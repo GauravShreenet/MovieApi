@@ -24,11 +24,10 @@ export const Search = ({ addToMovieList }) => {
     }
 
     const func = (mode) => {
-        addToMovieList({...movie, mode});
+        addToMovieList({ ...movie, mode });
         setMovie({});
-        strRef.current.value = ""; 
+        strRef.current.value = "";
     }
-    
 
     return (
         <div className="bg-black p-5 mt-5 rounded shadow-lg">
@@ -52,7 +51,7 @@ export const Search = ({ addToMovieList }) => {
                     {error && <div className="alert alert-danger">
                         {error}
                     </div>}
-                    {movie?.imdbID && <CustomCard movie={movie} func = {func} />}
+                    {movie?.imdbID && <CustomCard movie={movie} func={func} />}
 
                 </div>
             </div>
