@@ -26,6 +26,12 @@ export const Display = ({movieList, deleteMovie}) => {
             setFilteredMovies(filtered)
         }
     }, [movieList, selectedCat])
+
+    const func = (mode) => {
+        if (mode !== "delete") {
+            movieList({ ...movieList, mode });
+        }
+    }
    
     return (
         <div className="bg-black p-5 rounded shadow-lg mt-5">
@@ -44,7 +50,7 @@ export const Display = ({movieList, deleteMovie}) => {
             </div>
             <div className="row">
                 <div className="col d-flex flex-wrap justify-content-between gap-4">
-                    {filteredMovies.map((item, i)=> (<CustomCard key={i} movie={item} deleteMovie={deleteMovie}/>))}
+                    {filteredMovies.map((item, i)=> (<CustomCard key={i} movie={item} deleteMovie={deleteMovie} func={func}/>))}
                 </div>
             </div>
         </div>
