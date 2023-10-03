@@ -8,11 +8,10 @@ function App() {
 
   const [movieList, setMovieList] = useState([]);
 
-
-
   const addToMovieList = (movie) => {
+    const noRepeat = movieList.filter((item)=> item.imdbID !== movie.imdbID)
     setMovieList ([
-      ...movieList, movie
+      ...noRepeat, movie
     ])
   }
 
@@ -20,6 +19,7 @@ function App() {
     const updateMovie = movieList.filter((item)=> item.imdbID !== id)
     setMovieList(updateMovie)
   }
+  
 
   console.log(movieList)
 

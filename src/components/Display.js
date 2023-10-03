@@ -32,13 +32,18 @@ export const Display = ({movieList, deleteMovie}) => {
             movieList({ ...movieList, mode });
         }
     }
+
+
    
     return (
         <div className="bg-black p-5 rounded shadow-lg mt-5">
             <div className="row">
                 <div className="col">
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-danger" onClick={() => filterMovies('all')}>All</button>
+                        <button type="button" className="btn btn-danger" 
+                        onClick={() => {
+                            filterMovies('all');
+                            }}>All</button>
                         <button type="button" className="btn btn-warning" onClick={() =>filterMovies('happy')}>Happy</button>
                         <button type="button" className="btn btn-info" onClick={() =>filterMovies('action')}>Action</button>
                     </div>

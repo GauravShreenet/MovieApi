@@ -1,11 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { CustomCard } from './CustomCard'
 import { fetechMovie } from '../Utils/axiosHelp'
+import { randomCharGenerator } from '../Utils/randomStr'
 
 export const Search = ({ addToMovieList, deleteMovie }) => {
     const [movie, setMovie] = useState({})
     const strRef = useRef("");
     const [error, setError] = useState("")
+
+    useEffect(() => {
+        const randChar = randomCharGenerator();
+        
+        (async () => {
+            const randMovie = await fetechMovie(randChar);
+            setMovie(randMovie);
+        })();
+      
+    }, [])
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
@@ -27,7 +38,7 @@ export const Search = ({ addToMovieList, deleteMovie }) => {
     const func = (mode) => {
         if (mode !== "delete") {
             addToMovieList({ ...movie, mode });
-        setMovie({});
+            setMovie({});
         strRef.current.value = "";
         }else{
             setMovie({});
