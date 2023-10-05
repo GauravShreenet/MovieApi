@@ -40,7 +40,7 @@ function App() {
         <Search addToMovieList = {addToMovieList} deleteMovie={deleteMovie}/>
 
         {/* <!-- user cards --> */}
-        <Display movieList = {movieList} deleteMovie={deleteMovie} addToMovieList={addToMovieList}/>
+        <Display movieList = {movieList} deleteMovie={deleteMovie}/>
         
       </div>
 
